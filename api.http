@@ -1,0 +1,19 @@
+GET https://8nga7s75xc.execute-api.eu-central-1.amazonaws.com/peanuts
+Accept: application/json
+
+###
+
+GET https://8nga7s75xc.execute-api.eu-central-1.amazonaws.com/peanuts/count
+Accept: application/json
+
+###
+
+GET https://8nga7s75xc.execute-api.eu-central-1.amazonaws.com/peanuts/charlie
+Accept: application/json
+
+###
+
+GET https://8nga7s75xc.execute-api.eu-central-1.amazonaws.com/peanuts/charlie/credentials
+Accept: application/json
+
+###

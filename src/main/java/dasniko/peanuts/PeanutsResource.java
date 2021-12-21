@@ -25,14 +25,23 @@ public class PeanutsResource {
 
     @GET
     public List<Peanut> getPeanuts(@QueryParam("search") String search,
-                                   @QueryParam("first") @DefaultValue("1") int first,
+                                   @QueryParam("first") @DefaultValue("0") int first,
                                    @QueryParam("max") @DefaultValue("20") int max) {
         return repository.searchPeanuts(search, first, max);
     }
 
     @GET
+    @Path("/count")
+    public Integer getPeanutsCount() {
+        return repository.getCount();
+    }
+
+    @GET
     @Path("/{id}")
     public Peanut getPeanutById(@PathParam("id") String id) {
+        if (id.contains("@peanuts.com")) {
+            return repository.getPeanutByEmail(id);
+        }
         return repository.getPeanutByUsername(id);
     }
 
@@ -45,7 +54,7 @@ public class PeanutsResource {
     @PUT
     @Path("/{id}/credentials")
     public void updateCredentialData(@PathParam("id") String id, CredentialData credentialData) {
-        // do nothing, just for dummy purposed
+        // do nothing, just for dummy purposes
     }
 
 }

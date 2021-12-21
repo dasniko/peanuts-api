@@ -32,12 +32,20 @@ public class PeanutRepository {
                         p.getLastName().toLowerCase().contains(search.toLowerCase()) ||
                         p.getEmail().toLowerCase().contains(search.toLowerCase()))
                 .sorted(Comparator.comparing(p -> p.getLastName() + p.getFirstName()))
-                .skip(first - 1)
+                .skip(first)
                 .limit(max)
                 .collect(Collectors.toList());
     }
 
     Peanut getPeanutByUsername(String username) {
         return peanuts.stream().filter(p -> p.getUsername().equalsIgnoreCase(username)).findFirst().orElse(null);
+    }
+
+    Peanut getPeanutByEmail(String email) {
+        return peanuts.stream().filter(p -> p.getEmail().equalsIgnoreCase(email)).findFirst().orElse(null);
+    }
+
+    Integer getCount() {
+        return peanuts.size();
     }
 }
